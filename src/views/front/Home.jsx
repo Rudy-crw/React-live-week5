@@ -22,7 +22,7 @@ const Home = () => {
       >
         {/* 圖片本體 */}
         <img
-          src=""
+          src="https://github.com/Rudy-crw/React-live-week5/blob/main/src/public/HomeHero.png?raw=true"
           alt="R-Garage Hero"
           style={{
             width: "100%",

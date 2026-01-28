@@ -12,6 +12,7 @@ const Cart = () => {
       try {
         const res = await axios.get(`${API_BASE}/api/${API_PATH}/cart`);
         setCart(res.data.data);
+        // console.log(res.data.data);
       } catch (error) {
         console.log(error.response);
       }
@@ -81,6 +82,7 @@ const Cart = () => {
           <tr>
             <th scope="col"></th>
             <th scope="col">品名</th>
+            <th scope="col"></th>
             <th scope="col">數量/單位</th>
             <th scope="col">小計</th>
           </tr>
@@ -100,6 +102,13 @@ const Cart = () => {
                 </button>
               </td>
               <th scope="row">{cartItem.product.title}</th>
+              <td>
+                <img
+                  src={cartItem.product.imageUrl}
+                  alt={cartItem.product.title}
+                  style={{ width: 100 }}
+                />
+              </td>
               <td>
                 {cartItem.product.qty}
 

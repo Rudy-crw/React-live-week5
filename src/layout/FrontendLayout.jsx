@@ -3,20 +3,20 @@ import { Outlet, Link } from "react-router";
 const FrontendLayout = () => {
   return (
     <>
-      <header className="h-50">
+      <header>
         <div className="d-flex justify-content-end">
           <ul className="nav">
-            <li className="nav-item">
-              <Link className="nav-link" to="/">
+            <li className="nav-item btn ">
+              <Link className="nav-link " to="/">
                 首頁
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item btn">
               <Link className="nav-link" to="/products">
                 產品列表
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item btn">
               <Link className="nav-link" to="/cart">
                 購物車
               </Link>
