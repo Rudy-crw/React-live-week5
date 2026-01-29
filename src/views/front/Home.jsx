@@ -73,66 +73,105 @@ const Home = () => {
       </div>
 
       {/* =========================================
-          3. 其他區塊 (介紹/特色)
-          為了讓頁面有捲動感，背景圖設為 fixed，
-          這些內容捲動時會蓋過背景圖 (Parallax 效果)。
+          3. 其他區塊 (介紹/特色) - 美化版
           ========================================= */}
       <section
         id="intro"
-        className="py-5 bg-light text-dark shadow position-relative"
+        className="py-5 bg-light text-dark position-relative"
+        style={{ zIndex: 1 }} // 確保蓋在 fixed 背景圖之上
       >
+        {/* 在這裡加入一點點 CSS 來做 hover 動畫效果 */}
+        <style>
+          {`
+            .feature-card {
+              transition: all 0.3s ease;
+              border: none;
+            }
+            .feature-card:hover {
+              transform: translateY(-10px); /* 往上浮動 */
+              box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important; /* 加深陰影 */
+            }
+            .icon-box {
+              width: 80px;
+              height: 80px;
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              transition: all 0.3s ease;
+            }
+            .feature-card:hover .icon-box {
+              background-color: var(--bs-primary) !important;
+              color: white !important;
+            }
+          `}
+        </style>
+
         <div className="container py-5">
           <div className="row text-center">
             <div className="col-12 mb-5">
-              <h2 className="fw-bold display-6">為什麼選擇我們？</h2>
+              <h2 className="fw-bold display-6">為什麼選擇 R-Garage？</h2>
               <div
-                className="bg-primary mx-auto mt-3"
-                style={{ width: "60px", height: "3px" }}
+                className="bg-primary mx-auto mt-3 rounded"
+                style={{ width: "60px", height: "4px" }}
               ></div>
+              <p className="text-muted mt-3 fs-5">
+                我們不只租車，更提供一種生活態度
+              </p>
             </div>
 
-            {/* 特色卡片 */}
+            {/* 特色卡片 1 */}
             <div className="col-md-4 mb-4">
-              <div className="p-4 h-100">
-                <div className="h1 text-primary mb-3">
-                  <i className="bi bi-speedometer"></i>
+              <div className="card h-100 feature-card shadow-sm rounded-4 p-4 bg-white">
+                <div className="card-body">
+                  <div className="icon-box mb-4 bg-primary bg-opacity-10 text-primary rounded-circle fs-2">
+                    <i className="bi bi-speedometer2"></i>
+                  </div>
+                  <h4 className="card-title fw-bold mb-3">極致性能</h4>
+                  <p className="card-text text-muted">
+                    提供 Ducati V4 S、BMW S1000RR
+                    等頂級仿賽，保證原廠輸出，拒絕閹割馬力，體驗最純粹的速度感。
+                  </p>
                 </div>
-                <h4 className="fw-bold">極致性能</h4>
-                <p className="text-muted">
-                  提供 Ducati V4 S、BMW S1000RR
-                  等頂級仿賽，保證原廠輸出，體驗最純粹的速度感。
-                </p>
               </div>
             </div>
 
+            {/* 特色卡片 2 */}
             <div className="col-md-4 mb-4">
-              <div className="p-4 h-100">
-                <div className="h1 text-primary mb-3">
-                  <i className="bi bi-shield-check"></i>
+              <div className="card h-100 feature-card shadow-sm rounded-4 p-4 bg-white">
+                <div className="card-body">
+                  <div className="icon-box mb-4 bg-primary bg-opacity-10 text-primary rounded-circle fs-2">
+                    <i className="bi bi-shield-check"></i>
+                  </div>
+                  <h4 className="card-title fw-bold mb-3">安全保障</h4>
+                  <p className="card-text text-muted">
+                    每台車輛皆定期由原廠技師檢修，並含強制險與道路救援服務，輪胎與煞車絕對是最佳狀態。
+                  </p>
                 </div>
-                <h4 className="fw-bold">安全保障</h4>
-                <p className="text-muted">
-                  每台車輛皆定期由原廠技師檢修，並含強制險與道路救援服務，讓您無後顧之憂。
-                </p>
               </div>
             </div>
 
+            {/* 特色卡片 3 */}
             <div className="col-md-4 mb-4">
-              <div className="p-4 h-100">
-                <div className="h1 text-primary mb-3">
-                  <i className="bi bi-geo-alt"></i>
+              <div className="card h-100 feature-card shadow-sm rounded-4 p-4 bg-white">
+                <div className="card-body">
+                  <div className="icon-box mb-4 bg-primary bg-opacity-10 text-primary rounded-circle fs-2">
+                    <i className="bi bi-geo-alt-fill"></i>
+                  </div>
+                  <h4 className="card-title fw-bold mb-3">取車便利</h4>
+                  <p className="card-text text-muted">
+                    位於市中心交通樞紐，提供進口安全帽、手套與藍芽耳機租借。只需帶上您的駕照，隨時出發。
+                  </p>
                 </div>
-                <h4 className="fw-bold">取車便利</h4>
-                <p className="text-muted">
-                  位於市中心交通樞紐，提供裝備租借服務。只需帶上您的駕照，隨時出發。
-                </p>
               </div>
             </div>
           </div>
 
           <div className="text-center mt-5">
-            <Link to="/products" className="btn btn-outline-dark px-5">
-              查看全車系 (12款)
+            <Link
+              to="/products"
+              className="btn btn-outline-dark px-5 py-2 rounded-pill border-2 fw-bold"
+            >
+              查看全車系 (12款) <i className="bi bi-arrow-right ms-2"></i>
             </Link>
           </div>
         </div>

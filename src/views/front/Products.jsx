@@ -11,8 +11,9 @@ const Products = () => {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const res = await axios.get(`${API_BASE}/api/${API_PATH}/products`);
+        const res = await axios.get(`${API_BASE}/api/${API_PATH}/products/all`);
         setProducts(res.data.products);
+        // console.log(res.data.products);
       } catch (error) {
         console.log(error.response);
       }
@@ -42,9 +43,9 @@ const Products = () => {
   return (
     <>
       <div className="container">
-        <div className="row">
+        <div className="row justidy-content-center">
           {products.map((product) => (
-            <div className="col-md-4 col-6 mb-3" key={product.id}>
+            <div className="col-md-4  col-6 mb-3 " key={product.id}>
               <div className="card ">
                 <img
                   src={product.imageUrl}
@@ -52,7 +53,12 @@ const Products = () => {
                   alt={product.title}
                 />
                 <div className="card-body">
-                  <h5 className="card-title">{product.title}</h5>
+                  <h5 className="card-title">
+                    {product.category} {product.title}{" "}
+                    <span className="badge rounded-pill text-bg-danger ms-2">
+                      {product.style}
+                    </span>
+                  </h5>
                   <p className="card-text">{product.description}</p>
                   <p className="card-text">
                     <del>原價：{currency(product.origin_price)}</del> 售價：
